@@ -1,6 +1,6 @@
 package com.github.eduzol.domain;
 
-public class Person {
+public class Account {
 
 	private String firstName;
 	private String lastName;
@@ -8,7 +8,7 @@ public class Person {
 	private String gender;
 	private Boolean isInstructor;
 	
-	public Person(String firstName, String lastName, Integer age, String gender, Boolean isInstructor) {
+	public Account(String firstName, String lastName, Integer age, String gender, Boolean isInstructor) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -71,7 +71,7 @@ public class Person {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Person other = (Person) obj;
+		Account other = (Account) obj;
 		if (age == null) {
 			if (other.age != null)
 				return false;
