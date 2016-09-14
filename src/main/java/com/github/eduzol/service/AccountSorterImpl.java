@@ -29,8 +29,10 @@ public class AccountSorterImpl implements AccountSorter {
 		    	logger.trace("Comparing p1=" + p1+ " , p2=" + p2 );
 		        return ComparisonChain.start().
 		        		compare(p1.getLastName(), p2.getLastName()).
-		        		compare(p1.getFirstName(), p2.getFirstName())
-		        		.result();   
+		        		compare(p1.getFirstName(), p2.getFirstName()).
+		        		compare(p1.getAge(), p2.getAge()).
+		        		compare(p1.getGender(), p2.getGender()).
+		        		result();   
 		    }  
 		});  
 		
