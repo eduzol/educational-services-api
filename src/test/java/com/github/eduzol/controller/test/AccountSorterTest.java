@@ -58,6 +58,34 @@ public class AccountSorterTest {
 	}
 	
 	@Test
+	public void testAccountSorterByInstructorFlag() throws Exception {
+		
+		List<Account> sampleValues = Arrays.asList(
+				  new Account("Eduardo","Zola", 32, "Male", false),
+				  new Account("Anthony","Zola", 32, "Male", false),
+				  new Account("Hovanes","Gambaryan", 35, "Male", false),
+				  new Account("Lisa","Simpson", 25, "Female", true), 
+				  new Account("Lisa","Coleman", 25, "Female", true));
+		
+		List<Account> expectedValues = Arrays.asList(
+				  new Account("Lisa","Coleman", 25, "Female", true),
+				  new Account("Hovanes","Gambaryan", 35, "Male", false),
+				  new Account("Lisa","Simpson", 25, "Female", true),
+				  new Account("Anthony","Zola", 32, "Male", false),
+				  new Account("Eduardo","Zola", 32, "Male", false) );
+		
+	    logger.debug("before sorting: " + Arrays.toString(sampleValues.toArray()));
+		
+		accountSorter.sort(sampleValues);
+		
+		logger.debug("after sorting: " + Arrays.toString(sampleValues.toArray()));
+		
+		assertEquals(sampleValues, expectedValues);
+		assertNotEquals(sampleValues, Lists.reverse(expectedValues)  ); 
+		
+	}
+	
+	@Test
 	public void testAccountServiceByGender() throws Exception{
 		//TODO in data access application, mock Dao to generate this data	
 		List<Account> sampleValues = Arrays.asList(
