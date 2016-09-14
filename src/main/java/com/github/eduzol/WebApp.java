@@ -7,7 +7,7 @@ import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan("com.github.eduzol")
+@ComponentScan("com.github.eduzol.*")
 public class WebApp  extends SpringBootServletInitializer {
 
 	 @Override
