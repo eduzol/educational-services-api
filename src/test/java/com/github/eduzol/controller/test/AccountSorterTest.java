@@ -27,28 +27,28 @@ public class AccountSorterTest {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
-	private AccountSorter personService;
+	private AccountSorter accountSorter;
 	
 	@Test
-	public void testPersonServiceByFirstAndLastName() throws Exception{
-		//in data access application, mock Dao to generate this data	
+	public void testAccountSorterByFirstAndLastName() throws Exception{
+		//TODO in data access application, mock Dao to generate this data	
 		List<Account> sampleValues = Arrays.asList(
 				  new Account("Eduardo","Zola", 32, "Male", false),
 				  new Account("Anthony","Zola", 32, "Male", false),
-				  new Account("Hovanes","Gambaryan", 35, "Male", true),
-				  new Account("Lisa","Simpson", 25, "Female", true), 
-				  new Account("Lisa","Coleman", 25, "Female", true));
+				  new Account("Hovanes","Gambaryan", 35, "Male", false),
+				  new Account("Lisa","Simpson", 25, "Female", false), 
+				  new Account("Lisa","Coleman", 25, "Female", false));
 		
 		List<Account> expectedValues = Arrays.asList(
-				  new Account("Lisa","Coleman", 25, "Female", true),
-				  new Account("Hovanes","Gambaryan", 35, "Male", true),
-				  new Account("Lisa","Simpson", 25, "Female", true),
+				  new Account("Lisa","Coleman", 25, "Female", false),
+				  new Account("Hovanes","Gambaryan", 35, "Male", false),
+				  new Account("Lisa","Simpson", 25, "Female", false),
 				  new Account("Anthony","Zola", 32, "Male", false),
 				  new Account("Eduardo","Zola", 32, "Male", false) );
 
 		logger.debug("before sorting: " + Arrays.toString(sampleValues.toArray()));
 		
-		personService.sort(sampleValues);
+		accountSorter.sort(sampleValues);
 		
 		logger.debug("after sorting: " + Arrays.toString(sampleValues.toArray()));
 		
@@ -57,5 +57,84 @@ public class AccountSorterTest {
 		
 	}
 	
+	@Test
+	public void testAccountSorterByInstructorFlag() throws Exception {
+		
+		List<Account> sampleValues = Arrays.asList(
+				  new Account("Eduardo","Zola", 32, "Male", false),
+				  new Account("Anthony","Zola", 32, "Male", false),
+				  new Account("Hovanes","Gambaryan", 35, "Male", false),
+				  new Account("Lisa","Simpson", 25, "Female", true), 
+				  new Account("Lisa","Coleman", 25, "Female", true));
+		
+		List<Account> expectedValues = Arrays.asList(
+				  new Account("Lisa","Coleman", 25, "Female", true),
+				  new Account("Hovanes","Gambaryan", 35, "Male", false),
+				  new Account("Lisa","Simpson", 25, "Female", true),
+				  new Account("Anthony","Zola", 32, "Male", false),
+				  new Account("Eduardo","Zola", 32, "Male", false) );
+		
+	    logger.debug("before sorting: " + Arrays.toString(sampleValues.toArray()));
+		
+		accountSorter.sort(sampleValues);
+		
+		logger.debug("after sorting: " + Arrays.toString(sampleValues.toArray()));
+		
+		assertEquals(sampleValues, expectedValues);
+		assertNotEquals(sampleValues, Lists.reverse(expectedValues)  ); 
+		
+	}
 	
+	@Test
+	public void testAccountServiceByGender() throws Exception{
+		//TODO in data access application, mock Dao to generate this data	
+		List<Account> sampleValues = Arrays.asList(
+				  new Account("Eduardo","Zola", 32, "Male", false),
+				  new Account("Eduardo","Zola", 32, "Female", false),
+				  new Account("Hovanes","Gambaryan", 35, "Male", false)
+				  );
+		
+		List<Account> expectedValues = Arrays.asList(
+				 new Account("Hovanes","Gambaryan", 35, "Male", false),
+				 new Account("Eduardo","Zola", 32, "Female", false),
+				 new Account("Eduardo","Zola", 32, "Male", false)
+				 );
+
+		logger.debug("before sorting: " + Arrays.toString(sampleValues.toArray()));
+		
+		accountSorter.sort(sampleValues);
+		
+		logger.debug("after sorting: " + Arrays.toString(sampleValues.toArray()));
+		
+		assertEquals(sampleValues, expectedValues);
+		assertNotEquals(sampleValues, Lists.reverse(expectedValues)  );
+
+	}
+	
+	@Test
+	public void testAccountSorterByAge() throws Exception{
+		
+		List<Account> sampleValues = Arrays.asList(
+				  new Account("Eduardo","Zola", 32, "Male", false),
+				  new Account("Eduardo","Zola", 40, "Female", false),
+				  new Account("Eduardo","Zola", 31, "Male", false),
+				  new Account("Hovanes","Gambaryan", 35, "Male", false)
+				  );
+		
+		List<Account> expectedValues = Arrays.asList(
+				 new Account("Hovanes","Gambaryan", 35, "Male", false),
+				 new Account("Eduardo","Zola", 31, "Male", false),
+				 new Account("Eduardo","Zola", 32, "Male", false),
+				 new Account("Eduardo","Zola", 40, "Female", false)
+				 );
+
+		logger.debug("before sorting: " + Arrays.toString(sampleValues.toArray()));
+		
+		accountSorter.sort(sampleValues);
+		
+		logger.debug("after sorting: " + Arrays.toString(sampleValues.toArray()));
+		
+		assertEquals(sampleValues, expectedValues);
+		assertNotEquals(sampleValues, Lists.reverse(expectedValues)  );
+	}
 }
