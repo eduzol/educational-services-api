@@ -16,18 +16,18 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.github.eduzol.WebApp;
 import com.github.eduzol.domain.Account;
-import com.github.eduzol.service.PersonService;
+import com.github.eduzol.service.AccountSorter;
 import com.google.common.collect.Lists;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(WebApp.class)
 @WebAppConfiguration
-public class PersonServiceTest {
+public class AccountSorterTest {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
-	private PersonService personService;
+	private AccountSorter personService;
 	
 	@Test
 	public void testPersonServiceByFirstAndLastName() throws Exception{

@@ -12,7 +12,7 @@ import com.github.eduzol.domain.Account;
 import com.google.common.collect.ComparisonChain;
 
 @Service
-public class PersonServiceImpl implements PersonService {
+public class AccountSorterImpl implements AccountSorter {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
