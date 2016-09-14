@@ -1,4 +1,4 @@
-package com.github.eduzol;
+package com.github.eduzol.controller;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.slf4j.Logger;
