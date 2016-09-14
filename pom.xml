@@ -3,7 +3,7 @@
   <groupId>com.github.eduzol</groupId>
   <artifactId>spring-boot-app</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>spring-boot app</name>
+  <name>educational-services-api</name>
   
   <parent>
     <groupId>org.springframework.boot</groupId>
