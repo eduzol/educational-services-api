@@ -1,29 +1,61 @@
 package com.github.eduzol.controller;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.github.eduzol.domain.Greeting;
+import com.github.eduzol.domain.Account;
+import com.github.eduzol.service.AccountSorter;
+import com.google.common.base.Stopwatch;
 
 
 @Controller
 @RequestMapping("/")
 public class AppController {
 
-	private static final String template = "Hello, %s!";
-    private final AtomicLong counter = new AtomicLong();
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	private AccountSorter accountSorter ;
+	
+	@Autowired
+	public void setAccountSorter(AccountSorter accountSorter) {
+		this.accountSorter = accountSorter;
+	}
 
-    @RequestMapping(method=RequestMethod.GET)
-    public @ResponseBody Greeting sayHello(@RequestParam(value="name", required=false, defaultValue="Stranger") String name) {
-           	
-    	logger.info("greeting request for  " + name);
-    	return new Greeting(counter.incrementAndGet(), String.format(template, name));
+	@RequestMapping(method=RequestMethod.GET)
+    public @ResponseBody List<Account> demo() throws Exception {
+        
+		Stopwatch stopwatch = Stopwatch.createStarted();
+        		
+    	List<Account> accounts = Arrays.asList(
+				  new Account("Eduardo","Zola", 32, "Male", false),
+				  new Account("Anthony","Zola", 32, "Male", false),
+				  new Account("Hovanes","Gambaryan", 35, "Male", false),
+				  new Account("Lisa","Simpson", 25, "Female", true), 
+				  new Account("Lisa","Coleman", 25, "Female", true));
+    	
+    	accountSorter.sort(accounts);
+    	
+    	stopwatch.stop(); 
+    	long millis = stopwatch.elapsed(TimeUnit.MILLISECONDS);
+    	logger.info("time : " + millis ); 
+    	return accounts;
+    	
     }
+	
+	@ExceptionHandler(Exception.class)
+	public @ResponseBody String handleAllException(Exception ex) {
+
+		return "\"there was an error fulfilling this request\"";
+
+	}
+	
+	
 }
