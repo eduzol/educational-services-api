@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.github.eduzol.domain.Person;
+import com.github.eduzol.domain.Account;
 import com.google.common.collect.ComparisonChain;
 
 @Service
@@ -20,12 +20,12 @@ public class PersonServiceImpl implements PersonService {
 	 * @see com.github.eduzol.service.PersonService#sort(java.util.List)
 	 */
 	@Override
-	public void sort(List<Person> people ) throws Exception {
+	public void sort(List<Account> people ) throws Exception {
 		  
 		logger.debug("attempt to sort  " + people.size() + " objects ");
-		Collections.sort(people, new Comparator<Person>() {  
+		Collections.sort(people, new Comparator<Account>() {  
 		    @Override  
-		    public int compare(Person p1, Person p2) {
+		    public int compare(Account p1, Account p2) {
 		    	logger.trace("Comparing p1=" + p1+ " , p2=" + p2 );
 		        return ComparisonChain.start().
 		        		compare(p1.getLastName(), p2.getLastName()).

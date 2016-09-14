@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.github.eduzol.WebApp;
-import com.github.eduzol.domain.Person;
+import com.github.eduzol.domain.Account;
 import com.github.eduzol.service.PersonService;
 import com.google.common.collect.Lists;
 
@@ -32,19 +32,19 @@ public class PersonServiceTest {
 	@Test
 	public void testPersonServiceByFirstAndLastName() throws Exception{
 		//in data access application, mock Dao to generate this data	
-		List<Person> sampleValues = Arrays.asList(
-				  new Person("Eduardo","Zola", 32, "Male", false),
-				  new Person("Anthony","Zola", 32, "Male", false),
-				  new Person("Hovanes","Gambaryan", 35, "Male", true),
-				  new Person("Lisa","Simpson", 25, "Female", true), 
-				  new Person("Lisa","Coleman", 25, "Female", true));
+		List<Account> sampleValues = Arrays.asList(
+				  new Account("Eduardo","Zola", 32, "Male", false),
+				  new Account("Anthony","Zola", 32, "Male", false),
+				  new Account("Hovanes","Gambaryan", 35, "Male", true),
+				  new Account("Lisa","Simpson", 25, "Female", true), 
+				  new Account("Lisa","Coleman", 25, "Female", true));
 		
-		List<Person> expectedValues = Arrays.asList(
-				  new Person("Lisa","Coleman", 25, "Female", true),
-				  new Person("Hovanes","Gambaryan", 35, "Male", true),
-				  new Person("Lisa","Simpson", 25, "Female", true),
-				  new Person("Anthony","Zola", 32, "Male", false),
-				  new Person("Eduardo","Zola", 32, "Male", false) );
+		List<Account> expectedValues = Arrays.asList(
+				  new Account("Lisa","Coleman", 25, "Female", true),
+				  new Account("Hovanes","Gambaryan", 35, "Male", true),
+				  new Account("Lisa","Simpson", 25, "Female", true),
+				  new Account("Anthony","Zola", 32, "Male", false),
+				  new Account("Eduardo","Zola", 32, "Male", false) );
 
 		logger.debug("before sorting: " + Arrays.toString(sampleValues.toArray()));
 		
