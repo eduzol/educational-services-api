@@ -22,7 +22,7 @@ import com.google.common.base.Stopwatch;
 @Api(name="Educational Services API" , description = "API functionality for managing services Accounts")
 @ApiVersion(since = "1.0")
 @Controller
-public class AppController {
+public class DemoController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	private AccountSorter accountSorter ;
