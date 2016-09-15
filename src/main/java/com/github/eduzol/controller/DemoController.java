@@ -3,6 +3,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.jsondoc.core.annotation.Api;
+import org.jsondoc.core.annotation.ApiMethod;
+import org.jsondoc.core.annotation.ApiVersion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +19,10 @@ import com.github.eduzol.domain.Account;
 import com.github.eduzol.service.AccountSorter;
 import com.google.common.base.Stopwatch;
 
-
+@Api(name="Demo" , description = "API functionality for managing services Accounts")
+@ApiVersion(since = "1.0")
 @Controller
-@RequestMapping("/")
-public class AppController {
+public class DemoController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	private AccountSorter accountSorter ;
@@ -29,7 +32,8 @@ public class AppController {
 		this.accountSorter = accountSorter;
 	}
 
-	@RequestMapping(method=RequestMethod.GET)
+	@ApiMethod(description="Sample demo for Service Account funcitonality. Accounts will be sorted according to specified business rules")
+	@RequestMapping(path ="/demo" , method=RequestMethod.GET)
     public @ResponseBody List<Account> demo() throws Exception {
         
 		Stopwatch stopwatch = Stopwatch.createStarted();
@@ -52,9 +56,7 @@ public class AppController {
 	
 	@ExceptionHandler(Exception.class)
 	public @ResponseBody String handleAllException(Exception ex) {
-
 		return "\"there was an error fulfilling this request\"";
-
 	}
 	
 	

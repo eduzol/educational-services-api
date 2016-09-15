@@ -23,21 +23,21 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.github.eduzol.WebApp;
-import com.github.eduzol.controller.AppController;
+import com.github.eduzol.controller.DemoController;
 import com.github.eduzol.domain.Account;
 import com.github.eduzol.service.AccountSorter;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(WebApp.class)
 @WebAppConfiguration
-public class AppControllerTestIT {
+public class DemoControllerTestIT {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	private MockMvc mvc;
 	
 	@Autowired
 	@InjectMocks
-	private AppController appController;
+	private DemoController appController;
 	
 	@Mock
 	private AccountSorter accountSorterMock;
@@ -52,7 +52,7 @@ public class AppControllerTestIT {
 	@Test
 	public void testAppControllerEndpoint() throws Exception{
 		logger.debug("Controller endpoint");
-		mvc.perform(MockMvcRequestBuilders.get("/") )
+		mvc.perform(MockMvcRequestBuilders.get("/demo") )
 			.andExpect(status().isOk())
 			.andDo(print());
 	}
@@ -61,7 +61,7 @@ public class AppControllerTestIT {
 	public void testAppControllerEndpointException() throws Exception{
 		  
 	    doThrow(new Exception()).when(accountSorterMock).sort(Matchers.anyListOf(Account.class));
-		mvc.perform(MockMvcRequestBuilders.get("/") )
+		mvc.perform(MockMvcRequestBuilders.get("/demo") )
 		.andExpect(content().string("\"there was an error fulfilling this request\""))
 		.andDo(print());
 	}
