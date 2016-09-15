@@ -10,7 +10,6 @@ User management for educational services
 # educational-services-api in the cloud
 1. For convenience, an instance of this api is deployed on AWS :
  
-2. Api documentation : [http://ec2-54-213-149-42.us-west-2.compute.amazonaws.com:8080/educational-services-api/jsondoc-ui.html?url=http://ec2-54-213-149-42.us-west-2.compute.amazonaws.com:8080/educational-services-api/jsondoc](API Documentation)
+*  Api documentation : https://goo.gl/yZlkTO
 
-
-3. Api Endpoint : [http://ec2-54-213-149-42.us-west-2.compute.amazonaws.com:8080/educational-services-api/demo](API Demo endpoint)
+*  Api Endpoint :https://goo.gl/imHI0o 
