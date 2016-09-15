@@ -22,10 +22,8 @@ import com.github.eduzol.domain.Schedule;
 @ApiVersion(since = "1.0")
 @Controller
 public class ScheduleController {
-
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	
 	
 	@ApiMethod(description="create new class schedule")
 	@RequestMapping( path = "/schedule" , method = RequestMethod.POST)
