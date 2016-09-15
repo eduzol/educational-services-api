@@ -25,6 +25,16 @@ public class StudentController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
+	@ApiMethod(description="retrieve information about a student account")
+	@RequestMapping( path = "/student" , method = RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	public @ResponseBody Student getStudent(@ApiQueryParam(name="StudentId", description="Student Identifier") 
+								@RequestParam Integer studentId ) {
+		//TODO implement feature
+		logger.warn("FEATURE NOT IMPLEMENTED");
+		return  new Student("Eduardo","Zola", 32, "Male");
+	} 
+	
 	@ApiMethod(description="create new student account")
 	@RequestMapping( path = "/student" , method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.OK)
@@ -34,6 +44,31 @@ public class StudentController {
 		logger.warn("FEATURE NOT IMPLEMENTED");
 		return new Response(0, "Success");
 	} 
+	
+	
+	@ApiMethod(description="delete a student account")
+	@RequestMapping( path = "/student" , method = RequestMethod.PUT)
+	@ResponseStatus(HttpStatus.OK)
+	public @ResponseBody Response updateStudent(@ApiQueryParam(name="StudentId", description="Student Identifier") 
+								@RequestParam Integer studentId,
+								@ApiQueryParam(name="Student", description="Student data") 
+								@RequestParam Student studentData				) {
+		//TODO implement feature
+		logger.warn("FEATURE NOT IMPLEMENTED");
+		return new Response(0, "Success");
+	} 
+	
+	@ApiMethod(description="delete a student account")
+	@RequestMapping( path = "/student" , method = RequestMethod.DELETE)
+	@ResponseStatus(HttpStatus.OK)
+	public @ResponseBody Response deleteStudent(@ApiQueryParam(name="StudentId", description="Student Identifier") 
+								@RequestParam Integer studentId ) {
+		
+		//TODO implement feature
+		logger.warn("FEATURE NOT IMPLEMENTED");
+		return new Response(0, "Success");
+	} 
+	
 	
 	@ExceptionHandler(Exception.class)
 	@ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
