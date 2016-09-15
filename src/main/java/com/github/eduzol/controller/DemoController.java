@@ -19,7 +19,7 @@ import com.github.eduzol.domain.Account;
 import com.github.eduzol.service.AccountSorter;
 import com.google.common.base.Stopwatch;
 
-@Api(name="Educational Services API" , description = "API functionality for managing services Accounts")
+@Api(name="Demo" , description = "API functionality for managing services Accounts")
 @ApiVersion(since = "1.0")
 @Controller
 public class DemoController {
