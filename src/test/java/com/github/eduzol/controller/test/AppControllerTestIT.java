@@ -52,7 +52,7 @@ public class AppControllerTestIT {
 	@Test
 	public void testAppControllerEndpoint() throws Exception{
 		logger.debug("Controller endpoint");
-		mvc.perform(MockMvcRequestBuilders.get("/") )
+		mvc.perform(MockMvcRequestBuilders.get("/demo") )
 			.andExpect(status().isOk())
 			.andDo(print());
 	}
@@ -61,7 +61,7 @@ public class AppControllerTestIT {
 	public void testAppControllerEndpointException() throws Exception{
 		  
 	    doThrow(new Exception()).when(accountSorterMock).sort(Matchers.anyListOf(Account.class));
-		mvc.perform(MockMvcRequestBuilders.get("/") )
+		mvc.perform(MockMvcRequestBuilders.get("/demo") )
 		.andExpect(content().string("\"there was an error fulfilling this request\""))
 		.andDo(print());
 	}
